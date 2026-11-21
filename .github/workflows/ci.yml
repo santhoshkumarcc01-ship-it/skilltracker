@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: habithop
+          POSTGRES_PASSWORD: habithop
+          POSTGRES_DB: habithop
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U habithop -d habithop"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    env:
+      DATABASE_URL: postgresql://habithop:habithop@localhost:5432/habithop?schema=public
+      DIRECT_URL: postgresql://habithop:habithop@localhost:5432/habithop?schema=public
+      JWT_SECRET: habithop-ci-secret-key-with-at-least-32-characters
+      S3_ENDPOINT: http://localhost:9000
+      S3_ACCESS_KEY: minioadmin
+      S3_SECRET_KEY: minioadmin
+      S3_BUCKET: habithop-private
+      NEXT_PUBLIC_APP_URL: http://localhost:3000
+      NODE_ENV: test
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run audit
+      - run: npx prisma generate
+      - run: npm run db:migrate:deploy
+      - run: docker compose up -d minio
+      - run: docker compose run --rm minio-init
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - run: node scripts/smoke-standalone.mjs
+      - run: npx playwright install --with-deps chromium
+      - run: npm run e2e

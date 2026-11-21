@@ -1,0 +1,30 @@
+import { expect, test } from "@playwright/test";
+
+test("create a note, put it in a subject, search, and reopen it from the timeline", async ({ page }) => {
+  const email = `library-${Date.now()}@example.test`;
+  const password = "HabitHop!Secure2026";
+  await page.goto("/");
+  await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByLabel("Display name").fill("Curious Learner");
+  await page.getByLabel("Email").fill(email);
+  await page.getByLabel("Password", { exact: true }).fill(password);
+  await page.getByLabel("Confirm password").fill(password);
+  await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByRole("button", { name: /Sprout/ }).click();
+  await page.getByRole("button", { name: "Let’s go!" }).click();
+  await page.goto("/materials");
+  await page.getByRole("button", { name: "Add folder" }).click();
+  await page.getByLabel("Folder name").fill("Biology");
+  await page.getByRole("button", { name: "Save folder" }).click();
+  await page.getByRole("button", { name: /Add material/ }).click();
+  await page.getByLabel("Title").fill("Plant cell summary");
+  await page.getByLabel("Note content").fill("Chloroplasts turn light into energy.");
+  await page.getByLabel("Subject folder").selectOption({ label: "Biology" });
+  await page.getByRole("button", { name: "Save material" }).click();
+  await expect(page.getByText("Plant cell summary").first()).toBeVisible();
+  await page.getByLabel("Search materials").fill("Chloroplasts");
+  await expect(page.getByText("Plant cell summary").first()).toBeVisible();
+  await page.getByRole("button", { name: "↕ Look back" }).click();
+  await page.getByRole("button", { name: /Plant cell summary/ }).click();
+  await expect(page.getByRole("dialog").getByText("Chloroplasts turn light into energy.")).toBeVisible();
+});

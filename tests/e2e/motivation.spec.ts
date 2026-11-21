@@ -1,0 +1,31 @@
+import { expect, test } from "@playwright/test";
+
+test("adds a sticky, drags it, and keeps its position after reload", async ({ page }) => {
+  const email = `motivation-${Date.now()}@example.test`;
+  const password = "HabitHop!Secure2026";
+  await page.goto("/");
+  await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByLabel("Display name").fill("Board Hopper");
+  await page.getByLabel("Email").fill(email);
+  await page.getByLabel("Password", { exact: true }).fill(password);
+  await page.getByLabel("Confirm password").fill(password);
+  await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByRole("button", { name: /Sprout/ }).click();
+  await page.getByRole("button", { name: "Let’s go!" }).click();
+  await page.getByRole("link", { name: "Motivation" }).click();
+  await page.getByRole("button", { name: "＋ Add sticky" }).click();
+  const item = page.getByRole("article", { name: /Sticky note: A little progress/ });
+  const handle = item.getByRole("button", { name: /Drag to move note/ });
+  const before = await item.getAttribute("style");
+  const box = await handle.boundingBox();
+  if (!box) throw new Error("The sticky drag handle is not visible.");
+  await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+  await page.mouse.down();
+  await page.mouse.move(box.x + box.width / 2 + 90, box.y + box.height / 2 + 60, { steps: 6 });
+  await page.mouse.up();
+  await expect.poll(() => item.getAttribute("style")).not.toBe(before);
+  const after = await item.getAttribute("style");
+  await page.waitForTimeout(600);
+  await page.reload();
+  await expect(page.getByRole("article", { name: /Sticky note: A little progress/ })).toHaveAttribute("style", after!);
+});

@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+coverage/
+playwright-report/
+test-results/
+.env
+.env.local
+.env.*
+.env.test
+.env.test.local
+!.env.example
+.agents/
+*.tsbuildinfo
+prisma/dev.db

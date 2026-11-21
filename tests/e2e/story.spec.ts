@@ -1,0 +1,31 @@
+import { expect, test } from "@playwright/test";
+
+test("upload a photo, filter its memory by tag, then delete it", async ({ page }) => {
+  const email = `story-${Date.now()}@example.test`;
+  const password = "HabitHop!Secure2026";
+  await page.goto("/");
+  await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByLabel("Display name").fill("Memory Keeper");
+  await page.getByLabel("Email").fill(email);
+  await page.getByLabel("Password", { exact: true }).fill(password);
+  await page.getByLabel("Confirm password").fill(password);
+  await page.getByRole("button", { name: "Create account" }).click();
+  await page.getByRole("button", { name: /Sprout/ }).click();
+  await page.getByRole("button", { name: "Let’s go!" }).click();
+  await page.goto("/story");
+  await page.getByRole("button", { name: /Save a memory/ }).click();
+  await page.getByLabel("Title").fill("A sunny afternoon");
+  await page.getByLabel("Story").fill("We found the perfect picnic spot.");
+  await page.getByLabel("Choose memory photo or video").setInputFiles({ name: "memory.png", mimeType: "image/png", buffer: Buffer.from("iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/p6sAAAAASUVORK5CYII=", "base64") });
+  await page.getByRole("button", { name: "Upload", exact: true }).click();
+  await expect(page.getByText("Photo uploaded securely.")).toBeVisible();
+  await page.getByLabel("Tags").fill("picnic");
+  await page.getByLabel("Tags").press("Enter");
+  await page.getByRole("button", { name: "Save memory" }).click();
+  await expect(page.getByRole("heading", { name: "A sunny afternoon" })).toBeVisible();
+  await page.getByLabel("Filter by tag").selectOption("picnic");
+  await expect(page.getByRole("heading", { name: "A sunny afternoon" })).toBeVisible();
+  page.once("dialog", (dialog) => dialog.accept());
+  await page.getByRole("button", { name: "Delete" }).click();
+  await expect(page.getByText("Every good story starts small")).toBeVisible();
+});
