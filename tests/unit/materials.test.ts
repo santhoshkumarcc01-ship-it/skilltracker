@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { sanitizeNoteHtml } from "@/lib/note-sanitizer";
-import { assertUploadSize } from "@/server/lib/storage-rules";
-import { createMaterialSchema } from "@/server/validators/materials";
+import { sanitizeNoteHtml } from "@/shared/sanitization/note-sanitizer";
+import { assertUploadSize } from "@/backend/lib/storage-rules";
+import { createMaterialSchema } from "@/backend/validators/materials";
 
 describe("Material Library content policy", () => {
   it("removes scripts, event handlers, and unsafe URL protocols from note HTML", () => {

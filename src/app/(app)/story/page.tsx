@@ -1,3 +1,3 @@
-import { StoryCorner } from "@/components/story/StoryCorner";
+import { StoryCorner } from "@/frontend/components/story/StoryCorner";
 export default function StoryPage() { return <StoryCorner />; }
 

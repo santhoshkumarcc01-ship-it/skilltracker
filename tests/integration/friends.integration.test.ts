@@ -1,8 +1,8 @@
 // @vitest-environment node
 import { randomUUID } from "node:crypto";
 import { afterAll, afterEach, describe, expect, it } from "vitest";
-import { prisma } from "@/server/lib/prisma";
-import { blockFriend, createSharedGoal, getDuoStreak, inviteByToken, markSharedGoalProgress, pokeFriend, respondToInvite } from "@/server/services/friend-service";
+import { prisma } from "@/backend/lib/prisma";
+import { blockFriend, createSharedGoal, getDuoStreak, inviteByToken, markSharedGoalProgress, pokeFriend, respondToInvite } from "@/backend/services/friend-service";
 
 const users: { email: string; id: string }[] = [];
 async function newUser() {

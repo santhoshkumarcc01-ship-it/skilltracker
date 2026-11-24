@@ -1,8 +1,8 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, ApiError, dataResponse } from "@/server/lib/api";
-import { env } from "@/server/lib/env";
-import { generatePreviousWeekReports } from "@/server/services/reports/report-service";
-import { hasValidCronAuthorization } from "@/server/lib/reports/cron-auth";
+import { apiErrorResponse, ApiError, dataResponse } from "@/backend/lib/api";
+import { env } from "@/backend/lib/env";
+import { generatePreviousWeekReports } from "@/backend/services/reports/report-service";
+import { hasValidCronAuthorization } from "@/backend/lib/reports/cron-auth";
 
 async function run(request: NextRequest) {
   try {

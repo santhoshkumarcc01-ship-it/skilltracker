@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse, ApiError } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodValidation } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { editTask, removeTask } from "@/server/services/habit-service";
-import { localDateSchema, updateTaskSchema } from "@/server/validators/tasks";
+import { apiErrorResponse, dataResponse, ApiError } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodValidation } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { editTask, removeTask } from "@/backend/services/habit-service";
+import { localDateSchema, updateTaskSchema } from "@/backend/validators/tasks";
 
 const validate = withZodValidation(updateTaskSchema);
 type Context = { params: Promise<{ id: string }> };

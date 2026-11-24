@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { advanceDuoStreak } from "@/server/lib/duo-streak";
-import { localDateAt } from "@/server/lib/habit-math";
+import { advanceDuoStreak } from "@/backend/lib/duo-streak";
+import { localDateAt } from "@/backend/lib/habit-math";
 
 describe("duo streak rules", () => {
   it("does not advance until both friends finish their daily goals", () => {

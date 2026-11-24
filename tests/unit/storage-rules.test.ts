@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { ApiError } from "@/server/lib/api";
-import { assertUploadSize, IMAGE_LIMIT_BYTES, resolveExternalMedia, sniffMime, VIDEO_LIMIT_BYTES } from "@/server/lib/storage-rules";
+import { ApiError } from "@/backend/lib/api";
+import { assertUploadSize, IMAGE_LIMIT_BYTES, resolveExternalMedia, sniffMime, VIDEO_LIMIT_BYTES } from "@/backend/lib/storage-rules";
 
 describe("secure upload policy", () => {
   it("sniffs supported media from magic bytes", () => {

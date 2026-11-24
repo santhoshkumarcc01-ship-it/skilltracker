@@ -3,9 +3,9 @@
 import { useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { QRCodeSVG } from "qrcode.react";
-import { apiRequest, ApiClientError } from "@/lib/api-client";
-import { emitGameEvent } from "@/lib/game-events";
-import { Card, ChunkyButton, Input, Skeleton, Toast } from "@/components/ui";
+import { apiRequest, ApiClientError } from "@/frontend/lib/api-client";
+import { emitGameEvent } from "@/frontend/lib/game-events";
+import { Card, ChunkyButton, Input, Skeleton, Toast } from "@/frontend/components/ui";
 
 type Friend = { id: string; displayName: string; pet: { species: string; name: string } | null; level: number; xp: number | null; weeklyXp: number | null; currentStreak: number | null; finishedToday: boolean | null; duoStreak: number; waitingFor: string | null };
 type Invite = { id: string; senderId: string; receiverId: string; status: string; sender: { id: string; displayName: string }; receiver: { id: string; displayName: string } };

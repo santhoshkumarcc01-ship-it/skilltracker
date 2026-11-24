@@ -1,5 +1,5 @@
-import { Card } from "@/components/ui";
-import { AuthForm } from "@/components/auth/AuthForm";
+import { Card } from "@/frontend/components/ui";
+import { AuthForm } from "@/frontend/components/auth/AuthForm";
 
 export default async function LoginPage({ searchParams }: { searchParams: Promise<{ signup?: string | string[] }> }) {
   const params = await searchParams;

@@ -1,4 +1,4 @@
-import { MotivationBoard } from "@/components/motivation/MotivationBoard";
+import { MotivationBoard } from "@/frontend/components/motivation/MotivationBoard";
 
 export default function MotivationPage() { return <MotivationBoard />; }
 

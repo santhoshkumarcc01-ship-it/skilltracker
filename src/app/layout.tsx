@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Fredoka, Nunito } from "next/font/google";
-import { QueryProvider } from "@/components/providers/QueryProvider";
+import { QueryProvider } from "@/frontend/components/providers/QueryProvider";
 import "./globals.css";
 
 const fredoka = Fredoka({ subsets: ["latin"], variable: "--font-fredoka", display: "swap" });

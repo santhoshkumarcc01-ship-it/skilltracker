@@ -1,12 +1,12 @@
 // @vitest-environment node
 import { randomUUID } from "node:crypto";
 import { afterAll, afterEach, describe, expect, it } from "vitest";
-import { prisma } from "@/server/lib/prisma";
-import { addLocalDays } from "@/server/lib/habit-math";
-import { signup } from "@/server/services/auth-service";
-import { addTask, finishTask, todayForUser, updateTimer, editTask } from "@/server/services/habit-service";
-import { buyShopItem, getShop } from "@/server/services/game-service";
-import { signupSchema } from "@/server/validators/auth";
+import { prisma } from "@/backend/lib/prisma";
+import { addLocalDays } from "@/backend/lib/habit-math";
+import { signup } from "@/backend/services/auth-service";
+import { addTask, finishTask, todayForUser, updateTimer, editTask } from "@/backend/services/habit-service";
+import { buyShopItem, getShop } from "@/backend/services/game-service";
+import { signupSchema } from "@/backend/validators/auth";
 
 const emails: string[] = [];
 const request = () => new Request("http://localhost/api/v1/auth/signup", { headers: { "x-real-ip": "127.0.0.1" } });

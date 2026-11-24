@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { InMemoryFriendLookupLimiter } from "@/server/services/friend-rate-limit";
+import { InMemoryFriendLookupLimiter } from "@/backend/services/friend-rate-limit";
 
 describe("friend invite token lookup limiter", () => {
   it("allows ten lookups per hour and returns a retry window", () => {

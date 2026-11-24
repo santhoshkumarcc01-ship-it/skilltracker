@@ -2,14 +2,14 @@
 import { randomUUID } from "node:crypto";
 import { NextRequest } from "next/server";
 import { afterAll, afterEach, describe, expect, it } from "vitest";
-import { ApiError } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { prisma } from "@/server/lib/prisma";
-import { login, logout, refresh, signup } from "@/server/services/auth-service";
-import { loginSchema } from "@/server/validators/auth";
-import { requireUser } from "@/server/middleware/require-user";
-import { assertOwnership } from "@/server/middleware/ownership";
-import { signupSchema } from "@/server/validators/auth";
+import { ApiError } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { prisma } from "@/backend/lib/prisma";
+import { login, logout, refresh, signup } from "@/backend/services/auth-service";
+import { loginSchema } from "@/backend/validators/auth";
+import { requireUser } from "@/backend/middleware/require-user";
+import { assertOwnership } from "@/backend/middleware/ownership";
+import { signupSchema } from "@/backend/validators/auth";
 import { POST as signupPost } from "@/app/api/v1/auth/signup/route";
 import { GET as authMeGet } from "@/app/api/v1/auth/me/route";
 

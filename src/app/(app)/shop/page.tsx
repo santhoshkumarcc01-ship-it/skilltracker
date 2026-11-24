@@ -1,3 +1,3 @@
-import { PetShop } from "@/components/game/PetShop";
+import { PetShop } from "@/frontend/components/game/PetShop";
 export default function ShopPage() { return <PetShop />; }
 

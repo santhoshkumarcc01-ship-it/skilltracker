@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { InMemoryLoginRateLimitAdapter, loginRateLimitKey } from "@/server/lib/rate-limit";
+import { InMemoryLoginRateLimitAdapter, loginRateLimitKey } from "@/backend/lib/rate-limit";
 
 describe("login rate-limit adapter", () => {
   it("locks the IP and normalized email pair after five failures for fifteen minutes", () => {

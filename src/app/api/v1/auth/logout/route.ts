@@ -1,8 +1,8 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { clearAuthCookies } from "@/server/lib/auth/cookies";
-import { assertCsrf } from "@/server/lib/csrf";
-import { logout } from "@/server/services/auth-service";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { clearAuthCookies } from "@/backend/lib/auth/cookies";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { logout } from "@/backend/services/auth-service";
 
 export async function POST(request: NextRequest) {
   try {

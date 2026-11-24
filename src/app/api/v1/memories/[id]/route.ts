@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodValidation } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { getMemory, removeMemory, updateMemory } from "@/server/services/memory-service";
-import { updateMemorySchema } from "@/server/validators/memories";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodValidation } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { getMemory, removeMemory, updateMemory } from "@/backend/services/memory-service";
+import { updateMemorySchema } from "@/backend/validators/memories";
 
 const validate = withZodValidation(updateMemorySchema);
 type Context = { params: Promise<{ id: string }> };

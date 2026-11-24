@@ -1,12 +1,12 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { clearAuthCookies } from "@/server/lib/auth/cookies";
-import { assertCsrf } from "@/server/lib/csrf";
-import { requestIp } from "@/server/lib/rate-limit";
-import { deleteAccount } from "@/server/services/account-service";
-import { requireUser } from "@/server/middleware/require-user";
-import { withZodValidation } from "@/server/lib/validation";
-import { deleteAccountSchema } from "@/server/validators/auth";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { clearAuthCookies } from "@/backend/lib/auth/cookies";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { requestIp } from "@/backend/lib/rate-limit";
+import { deleteAccount } from "@/backend/services/account-service";
+import { requireUser } from "@/backend/middleware/require-user";
+import { withZodValidation } from "@/backend/lib/validation";
+import { deleteAccountSchema } from "@/backend/validators/auth";
 
 const validateDelete = withZodValidation(deleteAccountSchema);
 

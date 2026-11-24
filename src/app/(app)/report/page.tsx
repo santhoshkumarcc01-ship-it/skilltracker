@@ -1,10 +1,10 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Skeleton } from "@/components/ui";
+import { Skeleton } from "@/frontend/components/ui";
 
 const ReportDashboard = dynamic(
-  () => import("@/components/reports/ReportDashboard").then((module) => module.ReportDashboard),
+  () => import("@/frontend/components/reports/ReportDashboard").then((module) => module.ReportDashboard),
   { loading: () => <Skeleton className="h-[38rem]" />, ssr: false },
 );
 

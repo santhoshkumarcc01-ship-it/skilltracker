@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { NextResponse } from "next/server";
-import { setAuthCookies } from "@/server/lib/auth/cookies";
+import { setAuthCookies } from "@/backend/lib/auth/cookies";
 
 describe("authentication cookie policy", () => {
   it("keeps tokens HttpOnly with Lax same-site and scopes refresh to auth", () => {

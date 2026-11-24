@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { hasValidCronAuthorization } from "@/server/lib/reports/cron-auth";
+import { hasValidCronAuthorization } from "@/backend/lib/reports/cron-auth";
 
 describe("weekly report cron authorization", () => {
   it("requires the configured bearer secret and rejects missing or incorrect values", () => {

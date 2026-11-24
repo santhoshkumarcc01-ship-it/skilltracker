@@ -1,9 +1,9 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, ApiError, dataResponse } from "@/server/lib/api";
-import { env } from "@/server/lib/env";
-import { hasValidCronAuthorization } from "@/server/lib/reports/cron-auth";
-import { listReportUsers } from "@/server/repositories/report-repository";
-import { getTodayDashboard } from "@/server/services/habit-service";
+import { apiErrorResponse, ApiError, dataResponse } from "@/backend/lib/api";
+import { env } from "@/backend/lib/env";
+import { hasValidCronAuthorization } from "@/backend/lib/reports/cron-auth";
+import { listReportUsers } from "@/backend/repositories/report-repository";
+import { getTodayDashboard } from "@/backend/services/habit-service";
 
 async function run(request: NextRequest) {
   try {

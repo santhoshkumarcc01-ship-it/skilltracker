@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodSearchParams, withZodValidation } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { createMemory, getMemories } from "@/server/services/memory-service";
-import { createMemorySchema, memoryListQuerySchema } from "@/server/validators/memories";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodSearchParams, withZodValidation } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { createMemory, getMemories } from "@/backend/services/memory-service";
+import { createMemorySchema, memoryListQuerySchema } from "@/backend/validators/memories";
 
 const validateCreate = withZodValidation(createMemorySchema);
 const validateQuery = withZodSearchParams(memoryListQuerySchema);

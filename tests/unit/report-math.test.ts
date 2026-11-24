@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { localDateAt, weekStartForLocalDate } from "@/server/lib/habit-math";
-import { buildWeeklyReport } from "@/server/services/reports/report-math";
+import { localDateAt, weekStartForLocalDate } from "@/backend/lib/habit-math";
+import { buildWeeklyReport } from "@/backend/services/reports/report-math";
 
 const base = { userId: "u1", weekStart: "2026-03-02", timezone: "America/New_York", today: "2026-03-04", tasks: [], dayLogs: [], memories: [], materials: [], badges: [], currentXp: 0, bestStreak: 0, petName: "Pip" };
 

@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodValidation } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { createMotivationNote, getMotivationBoard } from "@/server/services/motivation/motivation-service";
-import { createNoteSchema } from "@/server/validators/motivation";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodValidation } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { createMotivationNote, getMotivationBoard } from "@/backend/services/motivation/motivation-service";
+import { createNoteSchema } from "@/backend/validators/motivation";
 
 const validate = withZodValidation(createNoteSchema);
 export async function GET(request: NextRequest) {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { hashPassword, verifyPassword } from "@/server/lib/auth/password";
+import { hashPassword, verifyPassword } from "@/backend/lib/auth/password";
 
 describe("password hashing", () => {
   it("hashes with Argon2id and verifies without storing the cleartext", async () => {

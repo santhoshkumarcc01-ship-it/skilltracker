@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { setAuthCookies } from "@/server/lib/auth/cookies";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodValidation } from "@/server/lib/validation";
-import { login } from "@/server/services/auth-service";
-import { loginSchema } from "@/server/validators/auth";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { setAuthCookies } from "@/backend/lib/auth/cookies";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodValidation } from "@/backend/lib/validation";
+import { login } from "@/backend/services/auth-service";
+import { loginSchema } from "@/backend/validators/auth";
 
 const validate = withZodValidation(loginSchema);
 

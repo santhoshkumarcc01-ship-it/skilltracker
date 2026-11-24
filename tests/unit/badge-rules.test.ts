@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { evaluateBadgeRules } from "@/server/lib/badge-rules";
+import { evaluateBadgeRules } from "@/backend/lib/badge-rules";
 
 describe("achievement rules", () => {
   it("unlocks activity, streak and collection milestones", () => {

@@ -1,8 +1,8 @@
 // @vitest-environment node
 import { randomUUID } from "node:crypto";
 import { afterAll, afterEach, describe, expect, it } from "vitest";
-import { prisma } from "@/server/lib/prisma";
-import { createMotivationNote, removeMotivationNote, updateMotivationNote } from "@/server/services/motivation/motivation-service";
+import { prisma } from "@/backend/lib/prisma";
+import { createMotivationNote, removeMotivationNote, updateMotivationNote } from "@/backend/services/motivation/motivation-service";
 
 const userIds: string[] = [];
 async function newUser() {

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { accessibleAccentText } from "@/lib/theme";
+import { accessibleAccentText } from "@/frontend/lib/theme";
 
 function luminance(hex: string) {
   const channels = hex.slice(1).match(/.{2}/g)!.map((part) => parseInt(part, 16) / 255);

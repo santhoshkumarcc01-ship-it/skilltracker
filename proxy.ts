@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { jwtVerify } from "jose";
-import { refreshSupabaseSession } from "@/utils/supabase/middleware";
+import { refreshSupabaseSession } from "@/frontend/utils/supabase/middleware";
 
 const publicPages = new Set(["/", "/login", "/signup", "/register"]);
 const apiMethods = new Map<string, string[]>([

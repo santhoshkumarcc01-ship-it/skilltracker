@@ -1,9 +1,9 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { withZodSearchParams } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { getMemoryTags } from "@/server/services/memory-service";
-import { tagQuerySchema } from "@/server/validators/memories";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { withZodSearchParams } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { getMemoryTags } from "@/backend/services/memory-service";
+import { tagQuerySchema } from "@/backend/validators/memories";
 
 const validate = withZodSearchParams(tagQuerySchema);
 export async function GET(request: NextRequest) {

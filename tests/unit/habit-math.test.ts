@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { addLocalDays, advanceStreak, applyMissedDay, completionXp, isOnTime, levelForXp, localDateAt, localHourAt, progressInLevel, xpForLevel } from "@/server/lib/habit-math";
+import { addLocalDays, advanceStreak, applyMissedDay, completionXp, isOnTime, levelForXp, localDateAt, localHourAt, progressInLevel, xpForLevel } from "@/backend/lib/habit-math";
 
 describe("timezone-aware habit calendar math", () => {
   it("uses the profile timezone across UTC midnight and leap day", () => {

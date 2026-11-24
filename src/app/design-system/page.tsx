@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Card, ChunkyButton, Confetti, CountUp, EmptyState, Input, Modal, PasswordInput, Pill, ProgressBar, ProgressRing, Skeleton, Tabs, Tag, Toast, Toggle, Sheet } from "@/components/ui";
-import { HopPet } from "@/components/pets/HopPet";
-import { SoundControls } from "@/components/game/SoundControls";
-import { useMotionTier, type MotionTier } from "@/components/providers/MotionProvider";
-import { TiltCard } from "@/components/fx/TiltCard";
-import { SpotlightCard } from "@/components/fx/SpotlightCard";
+import { Card, ChunkyButton, Confetti, CountUp, EmptyState, Input, Modal, PasswordInput, Pill, ProgressBar, ProgressRing, Skeleton, Tabs, Tag, Toast, Toggle, Sheet } from "@/frontend/components/ui";
+import { HopPet } from "@/frontend/components/pets/HopPet";
+import { SoundControls } from "@/frontend/components/game/SoundControls";
+import { useMotionTier, type MotionTier } from "@/frontend/components/providers/MotionProvider";
+import { TiltCard } from "@/frontend/components/fx/TiltCard";
+import { SpotlightCard } from "@/frontend/components/fx/SpotlightCard";
 
 type ThemePreview = "light" | "dark" | "high-contrast";
 

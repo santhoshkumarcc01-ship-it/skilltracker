@@ -1,9 +1,9 @@
 // @vitest-environment node
 import { randomUUID } from "node:crypto";
 import { afterAll, afterEach, describe, expect, it } from "vitest";
-import { prisma } from "@/server/lib/prisma";
-import { createMemory, getMemory, removeMemory } from "@/server/services/memory-service";
-import { createMemorySchema } from "@/server/validators/memories";
+import { prisma } from "@/backend/lib/prisma";
+import { createMemory, getMemory, removeMemory } from "@/backend/services/memory-service";
+import { createMemorySchema } from "@/backend/validators/memories";
 
 const emails: string[] = [];
 async function newUser() {

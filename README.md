@@ -14,15 +14,24 @@ HabitHop is a playful daily activity tracker built with Next.js, Prisma, and Pos
 
 The Compose project creates a private bucket. The local `.env` credentials and `JWT_SECRET` are development-only. Replace them and configure TLS, trusted proxy headers, and a shared rate-limit adapter before deployment.
 
+## Code layout
+
+- `src/frontend` contains reusable React UI, browser-side API/sound/theme utilities, and optional Supabase browser/server helpers.
+- `src/backend` contains the server-only validators, services, repositories, middleware, and infrastructure libraries.
+- `src/shared` contains isomorphic validation schemas and pure rules used by both UI and backend, such as note sanitization, motivation-board geometry, and XP/level calculations.
+- `src/app` contains the Next.js App Router entrypoints. Next requires pages, layouts, and API route handlers to remain in this folder; page files compose frontend components, and API handlers delegate to the backend.
+
+Keep backend code out of client components. Shared code must remain safe to import in both browser and Node.js environments.
+
 ## Supabase client setup
 
-The optional Supabase browser and server clients live in `src/utils/supabase`. Configure `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in `.env.local` to use them. The publishable key is intended for browser use; never put a Supabase secret/service-role key in a `NEXT_PUBLIC_` variable. The root middleware refreshes Supabase Auth sessions only when Supabase Auth cookies are present. HabitHop's existing email/password API, access/refresh cookies, and Prisma repositories remain the app's primary authentication and data path.
+The optional Supabase browser and server clients live in `src/frontend/utils/supabase`. Configure `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` in `.env.local` to use them. The publishable key is intended for browser use; never put a Supabase secret/service-role key in a `NEXT_PUBLIC_` variable. The root middleware refreshes Supabase Auth sessions only when Supabase Auth cookies are present. HabitHop's existing email/password API, access/refresh cookies, and Prisma repositories remain the app's primary authentication and data path.
 
 Prisma schema changes use `DIRECT_URL` when configured. The existing Supabase database is baselined in Prisma Migrate; apply future checked-in changes with `npm run db:migrate:deploy`. App tables deny direct `anon` and `authenticated` Data API access; requests go through the app's authenticated Prisma backend. Keep database connection strings in ignored `.env` files and rotate credentials that have been shared in chat.
 
 ## Visual system and motion
 
-HabitHop's Aurora Arcade visual identity uses semantic CSS variables in `src/app/globals.css`, TypeScript palette and section tokens in `src/lib/theme`, and Tailwind color/gradient/shadow utilities. Light, dark, and high-contrast previews are available in the app theme control. `src/lib/motion/tokens.ts` is the motion source of truth; `MotionProvider` combines OS and in-app reduced-motion settings, estimates device capability, and can downgrade effects when frame rate stays below 45 FPS. Components inside `LazyMotion` use the `m.*` primitives. Use `useMotionTier()` before adding expensive effects. See the [visual audit](./docs/aurora-audit.md), [performance baseline](./docs/perf-baseline.md), and [performance results](./docs/perf-after.md) for coverage and current limits.
+HabitHop's Aurora Arcade visual identity uses semantic CSS variables in `src/app/globals.css`, TypeScript palette and section tokens in `src/frontend/lib/theme`, and Tailwind color/gradient/shadow utilities. Light, dark, and high-contrast previews are available in the app theme control. `src/frontend/lib/motion/tokens.ts` is the motion source of truth; `MotionProvider` combines OS and in-app reduced-motion settings, estimates device capability, and can downgrade effects when frame rate stays below 45 FPS. Components inside `LazyMotion` use the `m.*` primitives. Use `useMotionTier()` before adding expensive effects. See the [visual audit](./docs/aurora-audit.md), [performance baseline](./docs/perf-baseline.md), and [performance results](./docs/perf-after.md) for coverage and current limits.
 
 ## Authentication flow
 

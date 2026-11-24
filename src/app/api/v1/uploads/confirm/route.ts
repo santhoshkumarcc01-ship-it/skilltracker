@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodValidation } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { confirmUpload } from "@/server/services/storage/storage-service";
-import { uploadConfirmSchema } from "@/server/validators/memories";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodValidation } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { confirmUpload } from "@/backend/services/storage/storage-service";
+import { uploadConfirmSchema } from "@/backend/validators/memories";
 
 const validate = withZodValidation(uploadConfirmSchema);
 export async function POST(request: NextRequest) {

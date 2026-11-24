@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect } from "react";
-import { ChunkyButton, Card, EmptyState } from "@/components/ui";
-import { HopPet } from "@/components/pets/HopPet";
+import { ChunkyButton, Card, EmptyState } from "@/frontend/components/ui";
+import { HopPet } from "@/frontend/components/pets/HopPet";
 
 export default function DashboardError({ reset }: { error: Error & { digest?: string }; reset: () => void }) {
   useEffect(() => { console.error("Dashboard boundary caught an error."); }, []);

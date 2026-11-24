@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { refreshState } from "@/server/lib/auth/refresh-state";
+import { refreshState } from "@/backend/lib/auth/refresh-state";
 
 describe("refresh token state", () => {
   it("distinguishes active, expired, and revoked tokens for rotation and reuse handling", () => {

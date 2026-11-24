@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { apiRequest } from "@/lib/api-client";
-import { Card, Skeleton } from "@/components/ui";
+import { apiRequest } from "@/frontend/lib/api-client";
+import { Card, Skeleton } from "@/frontend/components/ui";
 
 type LeagueData = { league: string; weeklyXp: number; rank: number; participantCount: number; promotionSpots: number; demotionSpots: number; demotionCutoff: number; expiresAt: string; board: { id: string; name: string; pet: { species: string; name: string } | null; weeklyXp: number; rank: number }[] };
 const emoji: Record<string, string> = { BRONZE: "🥉", SILVER: "🥈", GOLD: "🥇", SAPPHIRE: "💠", RUBY: "💎", DIAMOND: "💠" };

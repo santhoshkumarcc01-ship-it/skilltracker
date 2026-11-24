@@ -4,10 +4,10 @@ import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
 import { m, useReducedMotion } from "framer-motion";
-import { Card, ChunkyButton, Input, Tag } from "@/components/ui";
-import { apiRequest } from "@/lib/api-client";
-import { playSound, initializeSound } from "@/lib/sound";
-import { currentUserQueryKey } from "@/components/providers/auth";
+import { Card, ChunkyButton, Input, Tag } from "@/frontend/components/ui";
+import { apiRequest } from "@/frontend/lib/api-client";
+import { playSound, initializeSound } from "@/frontend/lib/sound";
+import { currentUserQueryKey } from "@/frontend/components/providers/auth";
 
 const pets = [
   { id: "sprout", name: "Sprout", emoji: "🌱", note: "A little leafy friend" },

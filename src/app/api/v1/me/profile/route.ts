@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodValidation } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { updateProfile } from "@/server/services/account-service";
-import { profileSchema } from "@/server/validators/auth";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodValidation } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { updateProfile } from "@/backend/services/account-service";
+import { profileSchema } from "@/backend/validators/auth";
 
 const validate = withZodValidation(profileSchema);
 

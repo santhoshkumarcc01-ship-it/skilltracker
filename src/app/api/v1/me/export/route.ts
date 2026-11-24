@@ -1,7 +1,7 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { requireUser } from "@/server/middleware/require-user";
-import { exportUserData } from "@/server/services/account-service";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { requireUser } from "@/backend/middleware/require-user";
+import { exportUserData } from "@/backend/services/account-service";
 
 export async function GET(request: NextRequest) {
   try {

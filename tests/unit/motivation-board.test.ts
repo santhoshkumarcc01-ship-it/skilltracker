@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
-import { clampBoardPosition, orderByBoardLayer } from "@/lib/motivation/board-math";
-import { InMemoryMotivationWriteLimiter } from "@/server/services/motivation/write-limit";
+import { clampBoardPosition, orderByBoardLayer } from "@/shared/motivation/board-math";
+import { InMemoryMotivationWriteLimiter } from "@/backend/services/motivation/write-limit";
 
 describe("Motivation Corner board rules", () => {
   it("clamps notes to board bounds and supported dimensions", () => {

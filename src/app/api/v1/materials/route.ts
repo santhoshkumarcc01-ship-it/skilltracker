@@ -1,10 +1,10 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { assertCsrf } from "@/server/lib/csrf";
-import { withZodSearchParams, withZodValidation } from "@/server/lib/validation";
-import { requireUser } from "@/server/middleware/require-user";
-import { createMaterial, getMaterials } from "@/server/services/material-service";
-import { createMaterialSchema, materialListSchema } from "@/server/validators/materials";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { assertCsrf } from "@/backend/lib/csrf";
+import { withZodSearchParams, withZodValidation } from "@/backend/lib/validation";
+import { requireUser } from "@/backend/middleware/require-user";
+import { createMaterial, getMaterials } from "@/backend/services/material-service";
+import { createMaterialSchema, materialListSchema } from "@/backend/validators/materials";
 
 const validateCreate = withZodValidation(createMaterialSchema);
 const validateQuery = withZodSearchParams(materialListSchema);

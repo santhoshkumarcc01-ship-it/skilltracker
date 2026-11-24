@@ -2,8 +2,8 @@
 import { randomUUID } from "node:crypto";
 import { NextRequest } from "next/server";
 import { afterAll, afterEach, describe, expect, it } from "vitest";
-import { prisma } from "@/server/lib/prisma";
-import { getWeeklyReport } from "@/server/services/reports/report-service";
+import { prisma } from "@/backend/lib/prisma";
+import { getWeeklyReport } from "@/backend/services/reports/report-service";
 import { GET as cronGet } from "@/app/api/v1/cron/weekly-reports/route";
 
 const users: string[] = [];

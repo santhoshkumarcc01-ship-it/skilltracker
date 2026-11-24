@@ -1,9 +1,9 @@
 import type { NextRequest } from "next/server";
-import { apiErrorResponse, dataResponse } from "@/server/lib/api";
-import { requireUser } from "@/server/middleware/require-user";
-import { withZodSearchParams } from "@/server/lib/validation";
-import { reportWeekQuery } from "@/server/validators/reports";
-import { getWeeklyReport } from "@/server/services/reports/report-service";
+import { apiErrorResponse, dataResponse } from "@/backend/lib/api";
+import { requireUser } from "@/backend/middleware/require-user";
+import { withZodSearchParams } from "@/backend/lib/validation";
+import { reportWeekQuery } from "@/backend/validators/reports";
+import { getWeeklyReport } from "@/backend/services/reports/report-service";
 
 export async function GET(request: NextRequest) {
   try {

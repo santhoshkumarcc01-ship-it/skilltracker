@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { accessibleAccentText, themeColors } from "@/lib/theme";
+import { accessibleAccentText, themeColors } from "@/frontend/lib/theme";
 
 function luminance(hex: string) {
   const value = hex.replace("#", "");
